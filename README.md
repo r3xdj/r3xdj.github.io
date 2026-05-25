@@ -1,3 +1,3 @@
 # r3xdj.github.io
 - My personal website
-- link: https://r3xdj.github.io
+- Blog: [My Blog](https://r3xdj.github.io)
