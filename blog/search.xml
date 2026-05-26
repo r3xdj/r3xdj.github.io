@@ -1,133 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Kali Linux Setup For CTF</title>
-    <url>/blog/2026/05/26/Kali-Linux-Setup-For-CTF/</url>
-    <content><![CDATA[<h1>Kali Linux Setup for CTF</h1>
-<p><a href="https://www.kali.org/docs/general-use/metapackages/">https://www.kali.org/docs/general-use/metapackages/</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt full-upgrade -y</span><br><span class="line"><span class="built_in">sudo</span> kali-tweaks</span><br></pre></td></tr></table></figure>
-<p>接著選擇需要的元件，可以直接選<code>kali-linux-everything</code>全裝</p>
-<h1>General</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解壓縮軟體</span></span><br><span class="line"><span class="built_in">sudo</span> apt install -y lzip lz4 lzop 7zip unar</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install lsd bat fzf silversearcher-ag libarchive-tools ffmpeg audacity npm -y</span><br><span class="line"><span class="comment">#lsd:ls加強版 #bat:cat加強版 #fzf:檔案搜尋 #ag:faster than grep</span></span><br></pre></td></tr></table></figure>
-<p>加入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> bat=batcat</span><br></pre></td></tr></table></figure>
-<p>至<code>~/.zshrc</code></p>
-<p>加入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> -s <span class="string">&#x27;\e\e&#x27;</span> <span class="string">&#x27;\C-asudo \C-e&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>至<code>~/.zshrc</code>，如此便可按兩下<code>esc</code>快速在指令前加入<code>sudo</code></p>
-<ul>
-<li>Lazyvim</li>
-</ul>
-<ol>
-<li>安裝字形</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .fonts</span><br><span class="line"><span class="built_in">cd</span> .fonts</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf</span><br><span class="line"><span class="built_in">sudo</span> fc-cache -f -v</span><br></pre></td></tr></table></figure>
-<p>重新啟動後更改終端機字體</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安裝neovim</span></span><br><span class="line"><span class="built_in">sudo</span> apt install neovim -y</span><br><span class="line"><span class="comment"># 安裝Lazyvim</span></span><br><span class="line"><span class="comment"># required</span></span><br><span class="line"><span class="built_in">mv</span> ~/.config/nvim&#123;,.bak&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># optional but recommended</span></span><br><span class="line"><span class="built_in">mv</span> ~/.local/share/nvim&#123;,.bak&#125;</span><br><span class="line"><span class="built_in">mv</span> ~/.local/state/nvim&#123;,.bak&#125;</span><br><span class="line"><span class="built_in">mv</span> ~/.cache/nvim&#123;,.bak&#125;</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/LazyVim/starter ~/.config/nvim</span><br><span class="line"><span class="built_in">rm</span> -rf ~/.config/nvim/.git</span><br><span class="line">nvim</span><br></pre></td></tr></table></figure>
-<ul>
-<li>中文輸入法</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#裝字體</span></span><br><span class="line"><span class="built_in">sudo</span> apt install fonts-arphic-uming fonts-noto-cjk -y</span><br><span class="line"><span class="comment">#裝框架、輸入法</span></span><br><span class="line"><span class="built_in">sudo</span> apt install fcitx5 fcitx5-chewing zenity im-config -y</span><br><span class="line"><span class="comment">#設定</span></span><br><span class="line"><span class="built_in">sudo</span> im-config</span><br></pre></td></tr></table></figure>
-<p>然後要進fcitx5設定把原住民移掉改加入英文(美式)，不然單引號會打成其他字元</p>
-<p>參考：<a href="https://hack543.com/kali-linux-2021-tradictional-chinese-env/">打造 Kali Linux 2021 中文桌面環境(字型、中文輸入法) (Kali Linux 2024 也適用)</a></p>
-<ul>
-<li>wxHexeditor</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install wxhexeditor -y</span><br></pre></td></tr></table></figure>
-<ul>
-<li>GHex</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install ghex -y</span><br></pre></td></tr></table></figure>
-<ul>
-<li>GIMP(修圖軟體)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gimp -y</span><br></pre></td></tr></table></figure>
-<ul>
-<li>zbarimg (QR code 解析)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install zbar-tools python3-zbar -y</span><br></pre></td></tr></table></figure>
-<h1>Web</h1>
-<ul>
-<li><a href="https://github.com/Horlad/r3dir">r3dir</a>: 重新導向用以繞過SSRF</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipx install r3dir</span><br></pre></td></tr></table></figure>
-<h2 id="Firefox-extension">Firefox extension</h2>
-<ul>
-<li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/tampermonkey/">Tampermonkey</a>: 執行js腳本</li>
-<li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/cookie-editor/">Cookies-Editor</a>: Cookies編輯器</li>
-<li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/dotgit/">DotGit</a>: .git資料夾洩漏檢查</li>
-<li><a href="https://addons.mozilla.org/en-US/firefox/addon/absolute-enable-right-click/">Absolute Enable Right Click &amp; Copy</a></li>
-<li><a href="https://github.com/LasCC/HackTools">HackTools</a>: Web滲透測試工具</li>
-<li><a href="https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/">Wappalyzer</a>: 分析網站組成</li>
-</ul>
-<h1>Crypto</h1>
-<h1>Forensic</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install -y foremost <span class="comment"># kali-linux-everything有</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>volatility3<br>
-<a href="https://pypi.org/project/volatility3/">https://pypi.org/project/volatility3/</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipx install volatility3</span><br></pre></td></tr></table></figure>
-<h2 id="zip-cen-op-zip偽加密工具">zip-cen-op (zip偽加密工具)</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipx install zip-cen-op</span><br></pre></td></tr></table></figure>
-<h2 id="隱寫術">隱寫術</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install steghide -y</span><br><span class="line">gem install zsteg</span><br><span class="line"><span class="built_in">sudo</span> apt install stegcracker -y</span><br></pre></td></tr></table></figure>
-<p>加入<br>
-<code>export PATH=/home/kali/.local/share/gem/ruby/3.3.0/bin:$PATH</code>至<code>~/.zshrc</code></p>
-<h3 id="安裝stegsolve">安裝stegsolve</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> /opt/Stegsolve</span><br><span class="line"><span class="built_in">cd</span> /opt/Stegsolve</span><br><span class="line"><span class="built_in">sudo</span> wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar</span><br><span class="line"><span class="built_in">sudo</span> nano /usr/local/bin/stegsolve</span><br></pre></td></tr></table></figure>
-<p>加入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">java -jar /opt/Stegsolve/stegsolve.jar</span><br></pre></td></tr></table></figure>
-<p>然後</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x /usr/local/bin/stegsolve</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x /opt/Stegsolve/stegsolve.jar</span><br></pre></td></tr></table></figure>
-<ul>
-<li>加入menu</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo nano /usr/share/applications/stegsolve.desktop</span><br></pre></td></tr></table></figure>
-<p>加入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.3</span><br><span class="line">Name=Stegsolve</span><br><span class="line">Comment=Steganography Image Analysis Tool</span><br><span class="line">Exec=java -jar /opt/Stegsolve/stegsolve.jar</span><br><span class="line">Icon=accessories-image-viewer</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=kali-forensics;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-desktop-database</span><br></pre></td></tr></table></figure>
-<h1>Pwn</h1>
-<ul>
-<li>pwntools</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install python3-pwntools -y</span><br></pre></td></tr></table></figure>
-<h2 id="GDB">GDB</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gdb -y</span><br></pre></td></tr></table></figure>
-<h3 id="plugin">plugin</h3>
-<ul>
-<li>gef: <a href="https://github.com/hugsy/gef">https://github.com/hugsy/gef</a></li>
-<li>pwndbg: <a href="https://github.com/pwndbg/pwndbg">https://github.com/pwndbg/pwndbg</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pwndbg/pwndbg ~/pwndbg</span><br><span class="line"><span class="built_in">cd</span> ~/pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>調整<code>~/.gdbinit</code>來決定要使用哪個(把不用的註解掉)</p>
-</blockquote>
-<h1>Reverse</h1>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install ghidra -y <span class="comment"># kali-linux-everything有</span></span><br></pre></td></tr></table></figure>
-<h1>Misc</h1>
-<ul>
-<li>SSTV Decoder<br>
-<a href="https://github.com/colaclanth/sstv">https://github.com/colaclanth/sstv</a></li>
-</ul>
-<h2 id="OSINT">OSINT</h2>
-<ul>
-<li><a href="https://github.com/GONZOsint/geowifi">Geowifi</a></li>
-<li><a href="">locatebssid</a><a href="https://github.com/kjbaker-uk/locatebssid">https://github.com/kjbaker-uk/locatebssid</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Cyber</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>Kali Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Markdown 測試文章</title>
-    <url>/blog/2026/05/26/Hexo-Markdown-%E6%B8%AC%E8%A9%A6%E6%96%87%E7%AB%A0/</url>
+    <url>/blog/2026/05/25/Hexo-Markdown-%E6%B8%AC%E8%A9%A6%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<blockquote>
 <p>Generated by ChatGPT</p>
 </blockquote>
@@ -344,6 +219,131 @@ e
         <tag>math</tag>
         <tag>code</tag>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kali Linux Setup For CTF</title>
+    <url>/blog/2026/05/26/Kali-Linux-Setup-For-CTF/</url>
+    <content><![CDATA[<h1>Kali Linux Setup for CTF</h1>
+<p><a href="https://www.kali.org/docs/general-use/metapackages/">https://www.kali.org/docs/general-use/metapackages/</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt full-upgrade -y</span><br><span class="line"><span class="built_in">sudo</span> kali-tweaks</span><br></pre></td></tr></table></figure>
+<p>接著選擇需要的元件，可以直接選<code>kali-linux-everything</code>全裝</p>
+<h1>General</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解壓縮軟體</span></span><br><span class="line"><span class="built_in">sudo</span> apt install -y lzip lz4 lzop 7zip unar</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install lsd bat fzf silversearcher-ag libarchive-tools ffmpeg audacity npm -y</span><br><span class="line"><span class="comment">#lsd:ls加強版 #bat:cat加強版 #fzf:檔案搜尋 #ag:faster than grep</span></span><br></pre></td></tr></table></figure>
+<p>加入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> bat=batcat</span><br></pre></td></tr></table></figure>
+<p>至<code>~/.zshrc</code></p>
+<p>加入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> -s <span class="string">&#x27;\e\e&#x27;</span> <span class="string">&#x27;\C-asudo \C-e&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>至<code>~/.zshrc</code>，如此便可按兩下<code>esc</code>快速在指令前加入<code>sudo</code></p>
+<ul>
+<li>Lazyvim</li>
+</ul>
+<ol>
+<li>安裝字形</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> .fonts</span><br><span class="line"><span class="built_in">cd</span> .fonts</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf</span><br><span class="line">wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf</span><br><span class="line"><span class="built_in">sudo</span> fc-cache -f -v</span><br></pre></td></tr></table></figure>
+<p>重新啟動後更改終端機字體</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安裝neovim</span></span><br><span class="line"><span class="built_in">sudo</span> apt install neovim -y</span><br><span class="line"><span class="comment"># 安裝Lazyvim</span></span><br><span class="line"><span class="comment"># required</span></span><br><span class="line"><span class="built_in">mv</span> ~/.config/nvim&#123;,.bak&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># optional but recommended</span></span><br><span class="line"><span class="built_in">mv</span> ~/.local/share/nvim&#123;,.bak&#125;</span><br><span class="line"><span class="built_in">mv</span> ~/.local/state/nvim&#123;,.bak&#125;</span><br><span class="line"><span class="built_in">mv</span> ~/.cache/nvim&#123;,.bak&#125;</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/LazyVim/starter ~/.config/nvim</span><br><span class="line"><span class="built_in">rm</span> -rf ~/.config/nvim/.git</span><br><span class="line">nvim</span><br></pre></td></tr></table></figure>
+<ul>
+<li>中文輸入法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#裝字體</span></span><br><span class="line"><span class="built_in">sudo</span> apt install fonts-arphic-uming fonts-noto-cjk -y</span><br><span class="line"><span class="comment">#裝框架、輸入法</span></span><br><span class="line"><span class="built_in">sudo</span> apt install fcitx5 fcitx5-chewing zenity im-config -y</span><br><span class="line"><span class="comment">#設定</span></span><br><span class="line"><span class="built_in">sudo</span> im-config</span><br></pre></td></tr></table></figure>
+<p>然後要進fcitx5設定把原住民移掉改加入英文(美式)，不然單引號會打成其他字元</p>
+<p>參考：<a href="https://hack543.com/kali-linux-2021-tradictional-chinese-env/">打造 Kali Linux 2021 中文桌面環境(字型、中文輸入法) (Kali Linux 2024 也適用)</a></p>
+<ul>
+<li>wxHexeditor</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install wxhexeditor -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>GHex</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install ghex -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>GIMP(修圖軟體)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gimp -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>zbarimg (QR code 解析)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install zbar-tools python3-zbar -y</span><br></pre></td></tr></table></figure>
+<h1>Web</h1>
+<ul>
+<li><a href="https://github.com/Horlad/r3dir">r3dir</a>: 重新導向用以繞過SSRF</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipx install r3dir</span><br></pre></td></tr></table></figure>
+<h2 id="Firefox-extension">Firefox extension</h2>
+<ul>
+<li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/tampermonkey/">Tampermonkey</a>: 執行js腳本</li>
+<li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/cookie-editor/">Cookies-Editor</a>: Cookies編輯器</li>
+<li><a href="https://addons.mozilla.org/zh-TW/firefox/addon/dotgit/">DotGit</a>: .git資料夾洩漏檢查</li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/absolute-enable-right-click/">Absolute Enable Right Click &amp; Copy</a></li>
+<li><a href="https://github.com/LasCC/HackTools">HackTools</a>: Web滲透測試工具</li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/">Wappalyzer</a>: 分析網站組成</li>
+</ul>
+<h1>Crypto</h1>
+<h1>Forensic</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install -y foremost <span class="comment"># kali-linux-everything有</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>volatility3<br>
+<a href="https://pypi.org/project/volatility3/">https://pypi.org/project/volatility3/</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipx install volatility3</span><br></pre></td></tr></table></figure>
+<h2 id="zip-cen-op-zip偽加密工具">zip-cen-op (zip偽加密工具)</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipx install zip-cen-op</span><br></pre></td></tr></table></figure>
+<h2 id="隱寫術">隱寫術</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install steghide -y</span><br><span class="line">gem install zsteg</span><br><span class="line"><span class="built_in">sudo</span> apt install stegcracker -y</span><br></pre></td></tr></table></figure>
+<p>加入<br>
+<code>export PATH=/home/kali/.local/share/gem/ruby/3.3.0/bin:$PATH</code>至<code>~/.zshrc</code></p>
+<h3 id="安裝stegsolve">安裝stegsolve</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> /opt/Stegsolve</span><br><span class="line"><span class="built_in">cd</span> /opt/Stegsolve</span><br><span class="line"><span class="built_in">sudo</span> wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar</span><br><span class="line"><span class="built_in">sudo</span> nano /usr/local/bin/stegsolve</span><br></pre></td></tr></table></figure>
+<p>加入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">java -jar /opt/Stegsolve/stegsolve.jar</span><br></pre></td></tr></table></figure>
+<p>然後</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x /usr/local/bin/stegsolve</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x /opt/Stegsolve/stegsolve.jar</span><br></pre></td></tr></table></figure>
+<ul>
+<li>加入menu</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo nano /usr/share/applications/stegsolve.desktop</span><br></pre></td></tr></table></figure>
+<p>加入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.3</span><br><span class="line">Name=Stegsolve</span><br><span class="line">Comment=Steganography Image Analysis Tool</span><br><span class="line">Exec=java -jar /opt/Stegsolve/stegsolve.jar</span><br><span class="line">Icon=accessories-image-viewer</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Categories=kali-forensics;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-desktop-database</span><br></pre></td></tr></table></figure>
+<h1>Pwn</h1>
+<ul>
+<li>pwntools</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install python3-pwntools -y</span><br></pre></td></tr></table></figure>
+<h2 id="GDB">GDB</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gdb -y</span><br></pre></td></tr></table></figure>
+<h3 id="plugin">plugin</h3>
+<ul>
+<li>gef: <a href="https://github.com/hugsy/gef">https://github.com/hugsy/gef</a></li>
+<li>pwndbg: <a href="https://github.com/pwndbg/pwndbg">https://github.com/pwndbg/pwndbg</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pwndbg/pwndbg ~/pwndbg</span><br><span class="line"><span class="built_in">cd</span> ~/pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>調整<code>~/.gdbinit</code>來決定要使用哪個(把不用的註解掉)</p>
+</blockquote>
+<h1>Reverse</h1>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install ghidra -y <span class="comment"># kali-linux-everything有</span></span><br></pre></td></tr></table></figure>
+<h1>Misc</h1>
+<ul>
+<li>SSTV Decoder<br>
+<a href="https://github.com/colaclanth/sstv">https://github.com/colaclanth/sstv</a></li>
+</ul>
+<h2 id="OSINT">OSINT</h2>
+<ul>
+<li><a href="https://github.com/GONZOsint/geowifi">Geowifi</a></li>
+<li><a href="">locatebssid</a><a href="https://github.com/kjbaker-uk/locatebssid">https://github.com/kjbaker-uk/locatebssid</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Cyber</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>Kali Linux</tag>
       </tags>
   </entry>
 </search>
