@@ -159,9 +159,9 @@ e
 <hr>
 <h1>🖼️ 圖片測試</h1>
 <h2 id="Markdown-圖片語法">Markdown 圖片語法</h2>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">avatar</span>](<span class="link">/img/icy_star.png</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">avatar</span>](<span class="link">icy_star.png</span>)</span><br></pre></td></tr></table></figure>
 <p>實際效果：</p>
-<p><img src="/img/icy_star.png" alt="avatar"></p>
+<p><img src="icy_star.png" alt="avatar"></p>
 <hr>
 <h1>📎 引用與註解</h1>
 <blockquote>
