@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const $articleList = $article.querySelectorAll('h1,h2,h3,h4,h5,h6')
     let detectItem = ''
 
-    // Optimization: Cache header positions
+/*     // Optimization: Cache header positions
     let headerList = []
     const updateHeaderPositions = () => {
       headerList = Array.from($articleList).map(ele => ({
@@ -568,12 +568,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateHeaderPositions()
     btf.addEventListenerPjax(window, 'resize', btf.throttle(updateHeaderPositions, 200))
-
+ */
     const findHeadPosition = top => {
       if (top === 0) return false
 
       let currentId = ''
       let currentIndex = ''
+
+      let headerList = Array.from($articleList).map(ele => ({
+        ele,
+        top: btf.getEleTop(ele),
+        id: ele.id
+      }))
 
       for (let i = 0; i < headerList.length; i++) {
         const item = headerList[i]
