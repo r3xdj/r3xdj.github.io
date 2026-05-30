@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://r3xdj.github.io/blog/projects/index.html</loc>
-    
-    <lastmod>2026-05-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/blog/tags/index.html</loc>
     
     <lastmod>2026-05-30</lastmod>
@@ -20,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/blog/about/index.html</loc>
+    <loc>https://r3xdj.github.io/blog/projects/index.html</loc>
     
     <lastmod>2026-05-30</lastmod>
     
@@ -30,6 +21,15 @@
   
   <url>
     <loc>https://r3xdj.github.io/blog/categories/index.html</loc>
+    
+    <lastmod>2026-05-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/blog/about/index.html</loc>
     
     <lastmod>2026-05-30</lastmod>
     
@@ -202,14 +202,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/blog/tags/AI/</loc>
+    <loc>https://r3xdj.github.io/blog/tags/ais3/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/blog/tags/RSA/</loc>
+    <loc>https://r3xdj.github.io/blog/tags/AI/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -230,14 +230,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/blog/tags/png/</loc>
+    <loc>https://r3xdj.github.io/blog/tags/Kali-Linux/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/blog/tags/Kali-Linux/</loc>
+    <loc>https://r3xdj.github.io/blog/tags/png/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -272,7 +272,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/blog/tags/ais3/</loc>
+    <loc>https://r3xdj.github.io/blog/tags/RSA/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
