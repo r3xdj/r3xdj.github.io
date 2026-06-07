@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/about/index.html</loc>
+    <loc>https://r3xdj.github.io/categories/index.html</loc>
     
     <lastmod>2026-06-07</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/index.html</loc>
+    <loc>https://r3xdj.github.io/about/index.html</loc>
     
     <lastmod>2026-06-07</lastmod>
     
@@ -258,14 +258,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/Kali-Linux/</loc>
+    <loc>https://r3xdj.github.io/tags/forensics/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/forensics/</loc>
+    <loc>https://r3xdj.github.io/tags/Kali-Linux/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -294,20 +294,6 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/math/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/ctflearn/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/format-string/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -349,6 +335,13 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/DP/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/Catalan-number/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -377,7 +370,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/DP/</loc>
+    <loc>https://r3xdj.github.io/tags/ctflearn/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/format-string/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
