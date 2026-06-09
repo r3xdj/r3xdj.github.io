@@ -42,7 +42,8 @@
 .flink-list-item {
   width: calc(50% - 20px) !important;
   margin: 20px 10px;
-  height: 120px !important;
+  min-height: 120px !important;
+  height: auto !important;
 }
 
 .flink-list-item a {
@@ -55,16 +56,23 @@
   margin: 15px 15px !important;
 }
 
+.flink-item-name,
+.flink-item-desc {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.2 !important;
+  height: auto !important;
+}
+
 .flink-item-name {
   font-size: 1.7em !important;
   padding-top: 14px;
-  height: 52px;
 }
 
 .flink-item-desc {
   font-size: 1.05em !important;
   padding-top: 12px;
-  height: 58px;
 }
 
 @media (max-width: 1024px) {
