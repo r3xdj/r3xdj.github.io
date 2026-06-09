@@ -30,3 +30,51 @@
 .content {
   line-height: 1.6;
 }
+
+/* Override flink layout for larger friend link cards */
+.flink-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0 0;
+}
+
+.flink-list-item {
+  width: calc(50% - 20px) !important;
+  margin: 20px 10px;
+  height: 120px !important;
+}
+
+.flink-list-item a {
+  font-size: 1.05em;
+}
+
+.flink-item-icon {
+  width: 80px !important;
+  height: 80px !important;
+  margin: 15px 15px !important;
+}
+
+.flink-item-name {
+  font-size: 1.7em !important;
+  padding-top: 14px;
+  height: 52px;
+}
+
+.flink-item-desc {
+  font-size: 1.05em !important;
+  padding-top: 12px;
+  height: 58px;
+}
+
+@media (max-width: 1024px) {
+  .flink-list-item {
+    width: calc(50% - 15px) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .flink-list-item {
+    width: calc(100% - 15px) !important;
+  }
+}
