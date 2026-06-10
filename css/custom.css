@@ -56,6 +56,11 @@
   color: #1f5aa2;
 }
 
+.about-tag-phy {
+  background: rgba(138, 228, 154, 0.55);
+  color: #108405;
+}
+
 /* Override flink layout for larger friend link cards */
 .flink-list {
   display: flex;
