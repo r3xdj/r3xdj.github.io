@@ -31,6 +31,31 @@
   line-height: 1.6;
 }
 
+.about-tag {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.12em 0.65em;
+  border-radius: 999px;
+  font-size: 0.88em;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.about-tag-cyber {
+  background: rgba(161, 105, 255, 0.18);
+  color: #5e2bd1;
+}
+
+.about-tag-math {
+  background: rgba(246, 233, 182, 0.55);
+  color: #7a6131;
+}
+
+.about-tag-dev {
+  background: rgba(173, 216, 255, 0.55);
+  color: #1f5aa2;
+}
+
 /* Override flink layout for larger friend link cards */
 .flink-list {
   display: flex;
