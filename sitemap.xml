@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/projects/index.html</loc>
-    
-    <lastmod>2026-06-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/tags/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
@@ -29,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/index.html</loc>
+    <loc>https://r3xdj.github.io/projects/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
     
@@ -39,6 +30,15 @@
   
   <url>
     <loc>https://r3xdj.github.io/about/index.html</loc>
+    
+    <lastmod>2026-06-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/categories/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
     
@@ -245,34 +245,6 @@
 
   
   <url>
-    <loc>https://r3xdj.github.io/tags/CTF/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/Kali-Linux/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/forensics/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/pwn/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/tags/crypto/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -294,6 +266,13 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/pwn/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/reverse/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -308,28 +287,21 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/ais3/</loc>
+    <loc>https://r3xdj.github.io/tags/CTF/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/ctflearn/</loc>
+    <loc>https://r3xdj.github.io/tags/Kali-Linux/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/format-string/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/RSA/</loc>
+    <loc>https://r3xdj.github.io/tags/forensics/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -351,6 +323,27 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/math/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/ctflearn/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/format-string/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/RSA/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -385,20 +378,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/sieve/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/DP/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/tags/Catalan-number/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -427,7 +406,21 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/factorial/</loc>
+    <loc>https://r3xdj.github.io/tags/sieve/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/DP/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/ais3/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -447,6 +440,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://r3xdj.github.io/tags/factorial/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -457,14 +457,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/Cyber/CTF-Writeup/</loc>
+    <loc>https://r3xdj.github.io/categories/OI/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/OI/</loc>
+    <loc>https://r3xdj.github.io/categories/Cyber/CTF-Writeup/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
