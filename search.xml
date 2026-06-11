@@ -783,230 +783,6 @@ Categories&#x3D;kali-forensics;<span aria-hidden="true" class="line-numbers-rows
       </tags>
   </entry>
   <entry>
-    <title>picoCTF 2022 Forensics Writeup</title>
-    <url>/2025/04/06/picoCTF-2022-Forensics-Writeup/</url>
-    <content><![CDATA[<p>參考影片：<a href="https://www.youtube.com/playlist?list=PL1H1sBF1VAKUOp_TVZiOTGt4nB74So8sv">PicoCTF 2022 Forensics<br>
-</a></p>
-<p>題目：<br>
-<a href="https://play.picoctf.org/practice?category=4&amp;difficulty=2&amp;originalEvent=70&amp;page=1&amp;search=">https://play.picoctf.org/practice?category=4&amp;difficulty=2&amp;originalEvent=70&amp;page=1&amp;search=</a></p>
-<h1 id="torrent-analyze" tabindex="-1">Torrent Analyze</h1>
-<p>題目提供了一個pcap檔案，我們可以用wireshark進行封包分析<br>
-題目提到是進行BT下載(所以分析BT-DHT)，目標是找出下載檔名。在<a href="https://en.wikipedia.org/wiki/Mainline_DHT#Operation">維基百科</a>上我們學到裡面會有一個SHA-1的infohash，所以我們在wireshark設定filter:<code>bt-dht contains &quot;info_hash&quot;</code><br>
-可以看到有好幾個不同的Hash，哪個才是我們要的呢？根據提示4檔案為.iso檔案，大小很大，因此會傳較多的封包，故可判斷出我們要的hash是<code>e2467cbf021192c241367b892230dc1e05c0580e</code><br>
-將其copy出來<br>
-<img src="https://hackmd.io/_uploads/r1bN-p1A1x.png" alt="image"><br>
-丟去搜尋就可以發現<s>都是別人的write up</s>檔案名稱為<code>ubuntu-19.10-desktop-amd64.iso</code></p>
-<ul>
-<li>參考資料：<a href="https://hackmd.io/@SBK6401/BynwYfvxT">https://hackmd.io/@SBK6401/BynwYfvxT</a></li>
-</ul>
-<h1 id="loocky-here" tabindex="-1">Loocky Here</h1>
-<p>用wget下載檔案，<code>cat anthem.flag.txt | ag &quot;picoCTF&quot;</code>就可找到</p>
-<h1 id="enhance!" tabindex="-1">Enhance!</h1>
-<p>題目給了一張svg檔案，用文字編輯器開啟可看出85~120行藏有Flag<br>
-(可搜尋大括號：<code>cat drawing.flag.svg | ag &quot;{&quot;</code>)</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">id="tspan3748">p <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.08942<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3754<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>i <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.09383<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3756<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>c <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.09824<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3758<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>o <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.10265<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3760<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>C <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.10706<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3762<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>T <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.11147<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3764<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>F &#123; 3 n h 4 n <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
-<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
-<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
-<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.11588<span class="token punctuation">"</span></span>
-<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
-<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3752<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>c 3 d _ a a b 7 2 9 d d &#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>接著需要將其取出，用以下指令可輸出，用ag抓出我們要的行<br>
-<code>cat drawing.flag.svg | ag &quot;&lt;/tspan&quot;</code><br>
-輸出如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">id&#x3D;&quot;tspan3748&quot;&gt;p &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3754&quot;&gt;i &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3756&quot;&gt;c &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3758&quot;&gt;o &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3760&quot;&gt;C &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3762&quot;&gt;T &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3764&quot;&gt;F &#123; 3 n h 4 n &lt;&#x2F;tspan&gt;&lt;tspan
-id&#x3D;&quot;tspan3752&quot;&gt;c 3 d _ a a b 7 2 9 d d &#125;&lt;&#x2F;tspan&gt;&lt;&#x2F;text&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我們進一步將訊息截斷，只取我們要的部分<br>
-<code>cat drawing.flag.svg | ag &quot;&lt;/tspan&quot; | cut -d &quot;&gt;&quot; -f2 | cut -d &quot;&lt;&quot; -f1</code><br>
-這裡<code>-d</code>參數用以指定截斷處的字元，<code>-f1</code>或<code>-f2</code>指定要留下前面那一段還是後面那一段<br>
-輸出如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">p 
-i 
-c 
-o 
-C 
-T 
-F &#123; 3 n h 4 n 
-c 3 d _ a a b 7 2 9 d d &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>接著要移除換行符與空白，我們可以用tr將他們刪除掉<br>
-<code>cat drawing.flag.svg | ag &quot;&lt;/tspan&quot; | cut -d &quot;&gt;&quot; -f2 | cut -d &quot;&lt;&quot; -f1 | tr -d &quot; &quot; | tr -d &quot;\n&quot;</code><br>
-得到的便是flag</p>
-<h1 id="st3g0" tabindex="-1">St3g0</h1>
-<p>先用<code>file</code>檢查一下</p>
-<pre class="line-numbers language-none"><code class="language-none">pico.flag.png: PNG image data, 585 x 172, 8-bit&#x2F;color RGBA, non-interlaced<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>沒什麼異狀<br>
-再用<code>exiftool</code>，也無異狀<br>
-使用<code>binwalk</code>得到輸出</p>
-<pre class="line-numbers language-none"><code class="language-none">DECIMAL       HEXADECIMAL     DESCRIPTION
---------------------------------------------------------------------------------
-0             0x0             PNG image, 585 x 172, 8-bit&#x2F;color RGBA, non-interlaced
-41            0x29            Zlib compressed data, default compression<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>使用<code>zsteg</code>，便得到我們的flag</p>
-<h1 id="file-types" tabindex="-1">File types</h1>
-<p>用<code>flie</code>確認，發現副檔名<code>.pdf</code>是騙人的，他是一個<code>shell script</code>。用<code>bat Flag.pdf</code>確定這個script是沒問題的，我們chmod給權限並執行</p>
-<pre class="line-numbers language-none"><code class="language-none">x - created lock directory _sh00046.
-x - extracting flag (text)
-.&#x2F;Flag.pdf: 119: uudecode: not found
-restore of flag failed
-flag: MD5 check failed
-x - removed lock directory _sh00046.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>於是我們安裝<code>uudecode</code></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> sharutils <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>再試一次，得到一個名為flag的檔案，用<code>file</code>確認發現為current ar archive</p>
-<h2 id="ar" tabindex="-1" id="ar">ar</h2>
-<p><code>man ar</code> 看如何將其解壓縮<br>
-<code>ar x flag</code></p>
-<h2 id="cpio" tabindex="-1" id="cpio">cpio</h2>
-<pre class="line-numbers language-none"><code class="language-none">mv flag flag.cpio
-cpio -i &lt; flag.cpio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="bzip2" tabindex="-1" id="bzip2">bzip2</h2>
-<pre class="line-numbers language-none"><code class="language-none">bzip2 -d flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="gzip" tabindex="-1" id="Gzip">Gzip</h2>
-<pre class="line-numbers language-none"><code class="language-none">mv flag.out flag.gz
-gzip -d flag.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="lzip" tabindex="-1" id="lzip">lzip</h2>
-<pre class="line-numbers language-none"><code class="language-none">lzip -d flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="lz4" tabindex="-1" id="lz4">lz4</h2>
-<pre class="line-numbers language-none"><code class="language-none">mv flag.out flag.lz4
-lz4 -d flag.lz4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="lzma" tabindex="-1" id="lzma">lzma</h2>
-<pre class="line-numbers language-none"><code class="language-none">mv flag flag.lzma
-lzma -d flag.lzma<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="lzop" tabindex="-1" id="lzop">lzop</h2>
-<pre class="line-numbers language-none"><code class="language-none">mv flag flag.lzop
-lzop -d flag.lzop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="lzip-1" tabindex="-1" id="lzip-2">lzip</h2>
-<pre class="line-numbers language-none"><code class="language-none">lzip -d flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="xz" tabindex="-1" id="xz">xz</h2>
-<pre class="line-numbers language-none"><code class="language-none">mv flag.out flag.xz
-xz -d flag.xz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="hex" tabindex="-1" id="Hex">Hex</h2>
-<p>終於，我們拿到了文字檔，<code>cat</code>後結果看起來是16進位</p>
-<pre class="line-numbers language-none"><code class="language-none">7069636f4354467b66316c656e406d335f6d406e3170756c407431306e5f
-6630725f3062326375723137795f39353063346665657d0a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>用xxd解碼<code>cat flag | xxd -p -r</code>即得flag。</p>
-<blockquote>
-<p>一直解壓縮的部分跟bandit Level 12 -&gt; 13 挺像的</p>
-</blockquote>
-<h1 id="eavesdrop" tabindex="-1">Eavesdrop</h1>
-<p>這題也是封包分析題，一樣丟進wireshark分析</p>
-<blockquote>
-<p>TCP協議會用三次握手建立連接，四次揮手段開連接<br>
-Arp協議是用來取得目標ip的mac地址的<br>
-DHCP協議用來分配ip<br>
-可以看這兩個影片：</p>
-<ul>
-<li><a href="https://youtu.be/Iuvjwrm_O5g">一条视频讲清楚TCP协议与UDP协议-什么是三次握手与四次挥手?</a></li>
-<li><a href="https://youtu.be/mOVWyogzKvY">一条视频讲清楚什么是ARP协议-ARP攻击又是什么</a></li>
-</ul>
-</blockquote>
-<p>有以上先備知識，數據又沒加密，可以一邊看他們聊天內容一邊解題<br>
-所以劇情應如下：</p>
-<h2 id="%E5%8A%87%E6%83%85" tabindex="-1" id="劇情">劇情</h2>
-<h3 id="no.1~2" tabindex="-1" id="No-1-2">No.1~2</h3>
-<p>10.0.2.15請求ip位置</p>
-<h3 id="no.3~4" tabindex="-1" id="No-3-4">No.3~4</h3>
-<p>為了傳送訊息，使用arp協議取得目標的mac位置</p>
-<h3 id="no.5~11" tabindex="-1" id="No-5-11">No.5~11</h3>
-<p>No.5~7為10.0.2.15和10.0.2.4 TCP三次握手的過程<br>
-No.8~11是使用arp協議互相取得對方mac位置</p>
-<h3 id="no.12~no.19" tabindex="-1" id="No-12-No-19">No.12~No.19</h3>
-<blockquote>
-<p>10.0.2.4:Hey, how do you decrypt this file again? #No.12<br>
-10.0.2.15:You’re serious? #No.14<br>
-10.0.2.4:Yeah, I’m serious #No.16<br>
-10.0.2.15:*sigh* <strong>openssl des3 -d -salt -in file.des3 -out file.txt -k supersecretpassword123</strong> #No.18</p>
-</blockquote>
-<p>通信過程中會有一些Arp，我們都知道他是幹嘛的，對解題沒什麼幫助所以之後都將跳過。</p>
-<h3 id="no.24~37" tabindex="-1" id="No-24-37">No.24~37</h3>
-<blockquote>
-<p>10.0.2.4:Ok, great, thanks. #No.24<br>
-10.0.2.15:Let’s use Discord next time, it’s more secure. #No.26</p>
-</blockquote>
-<p>(你也知道現在這樣不安全啊)</p>
-<blockquote>
-<p>10.0.2.4:C’mon, no one knows we use this program like this! #No.28<br>
-10.0.2.15:Whatever. #No.30<br>
-10.0.2.4:Hey. #No.32<br>
-10.0.2.15:Yeah? #No.34<br>
-10.0.2.4:<strong>Could you transfer the file to me again?</strong></p>
-</blockquote>
-<p>看來是10.0.2.15接著會傳檔案給10.0.2.4，裡面便有本題的答案</p>
-<h3 id="no.38~47" tabindex="-1" id="No-38-47">No.38~47</h3>
-<p>看起來是10.0.2.15向35.224.170.84發起HTTP請求，可能只是單純瀏覽別的網站或是要下載要傳給10.0.2.4的檔案(我不知道XD)</p>
-<h3 id="no.48~" tabindex="-1" id="No-48">No.48~</h3>
-<blockquote>
-<p>10.0.2.15:Oh great. Ok, over 9002? #No.48<br>
-10.0.2.4:Yeah, listening. #No.52</p>
-</blockquote>
-<p>這裡的9002我不知道是什麼，可能是port之類的？</p>
-<p>No.57 10.0.2.15傳了48bytes的data，之後說</p>
-<blockquote>
-<p>10.0.2.15: Sent it #No.59</p>
-</blockquote>
-<p>所以No.57發送的這個data應該就是他傳輸的檔案，我們要的東西<br>
-將其以Hex Stream複製出來，得到</p>
-<pre class="line-numbers language-hex" data-language="hex"><code class="language-hex">53616c7465645f5f3c4b26e8b8f91e2c4af8031cfaf5f8f16fd40c25d40314e6497b39375808aba186f48da42eefa895<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>將其寫入檔案，並用No.18提到的解密方法解密</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#寫入檔案</span>
-<span class="token builtin class-name">echo</span> <span class="token string">"53616c7465645f5f3c4b26e8b8f91e2c4af8031cfaf5f8f16fd40c25d40314e6497b39375808aba186f48da42eefa895"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-p</span> <span class="token parameter variable">-r</span> <span class="token operator">></span> file.des3
-<span class="token comment">#解密</span>
-openssl des3 <span class="token parameter variable">-d</span> <span class="token parameter variable">-salt</span> <span class="token parameter variable">-in</span> file.des3 <span class="token parameter variable">-out</span> file.txt <span class="token parameter variable">-k</span> supersecretpassword123
-<span class="token comment">#查看</span>
-<span class="token function">cat</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="redaction-gone-wrong" tabindex="-1">Redaction gone wrong</h1>
-<p>超簡單，當學生都做過的事<br>
-把pdf打開，用選取把黑框的部分反白就是答案</p>
-<h1 id="packets-primer" tabindex="-1">Packets Primer</h1>
-<p>簡單題，一樣開wiresharp分析封包，點開第四個封包就是答案<br>
-複製出來後可用<code>tr -d &quot; &quot;</code>把空格去掉</p>
-<h1 id="" tabindex="-1"></h1>
-]]></content>
-      <categories>
-        <category>Cyber</category>
-        <category>CTF Writeup</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>forensics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>picoCTF 2022 bof Writeup</title>
     <url>/2025/04/10/picoCTF-2022-bof-Writeup/</url>
     <content><![CDATA[<h1 id="buffer-overflow-0" tabindex="-1">buffer overflow 0</h1>
@@ -2394,6 +2170,230 @@ Flag:</p>
       </tags>
   </entry>
   <entry>
+    <title>picoCTF 2022 Forensics Writeup</title>
+    <url>/2025/04/06/picoCTF-2022-Forensics-Writeup/</url>
+    <content><![CDATA[<p>參考影片：<a href="https://www.youtube.com/playlist?list=PL1H1sBF1VAKUOp_TVZiOTGt4nB74So8sv">PicoCTF 2022 Forensics<br>
+</a></p>
+<p>題目：<br>
+<a href="https://play.picoctf.org/practice?category=4&amp;difficulty=2&amp;originalEvent=70&amp;page=1&amp;search=">https://play.picoctf.org/practice?category=4&amp;difficulty=2&amp;originalEvent=70&amp;page=1&amp;search=</a></p>
+<h1 id="torrent-analyze" tabindex="-1">Torrent Analyze</h1>
+<p>題目提供了一個pcap檔案，我們可以用wireshark進行封包分析<br>
+題目提到是進行BT下載(所以分析BT-DHT)，目標是找出下載檔名。在<a href="https://en.wikipedia.org/wiki/Mainline_DHT#Operation">維基百科</a>上我們學到裡面會有一個SHA-1的infohash，所以我們在wireshark設定filter:<code>bt-dht contains &quot;info_hash&quot;</code><br>
+可以看到有好幾個不同的Hash，哪個才是我們要的呢？根據提示4檔案為.iso檔案，大小很大，因此會傳較多的封包，故可判斷出我們要的hash是<code>e2467cbf021192c241367b892230dc1e05c0580e</code><br>
+將其copy出來<br>
+<img src="https://hackmd.io/_uploads/r1bN-p1A1x.png" alt="image"><br>
+丟去搜尋就可以發現<s>都是別人的write up</s>檔案名稱為<code>ubuntu-19.10-desktop-amd64.iso</code></p>
+<ul>
+<li>參考資料：<a href="https://hackmd.io/@SBK6401/BynwYfvxT">https://hackmd.io/@SBK6401/BynwYfvxT</a></li>
+</ul>
+<h1 id="loocky-here" tabindex="-1">Loocky Here</h1>
+<p>用wget下載檔案，<code>cat anthem.flag.txt | ag &quot;picoCTF&quot;</code>就可找到</p>
+<h1 id="enhance!" tabindex="-1">Enhance!</h1>
+<p>題目給了一張svg檔案，用文字編輯器開啟可看出85~120行藏有Flag<br>
+(可搜尋大括號：<code>cat drawing.flag.svg | ag &quot;{&quot;</code>)</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">id="tspan3748">p <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.08942<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3754<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>i <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.09383<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3756<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>c <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.09824<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3758<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>o <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.10265<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3760<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>C <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.10706<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3762<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>T <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.11147<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3764<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>F &#123; 3 n h 4 n <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tspan</span>
+<span class="token attr-name"><span class="token namespace">sodipodi:</span>role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span>
+<span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>107.43014<span class="token punctuation">"</span></span>
+<span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>132.11588<span class="token punctuation">"</span></span>
+<span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>0.00352781px<span class="token punctuation">;</span><span class="token property">line-height</span><span class="token punctuation">:</span>1.25<span class="token punctuation">;</span><span class="token property">fill</span><span class="token punctuation">:</span>#ffffff<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>0.26458332<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span>
+<span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tspan3752<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>c 3 d _ a a b 7 2 9 d d &#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tspan</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接著需要將其取出，用以下指令可輸出，用ag抓出我們要的行<br>
+<code>cat drawing.flag.svg | ag &quot;&lt;/tspan&quot;</code><br>
+輸出如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">id&#x3D;&quot;tspan3748&quot;&gt;p &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3754&quot;&gt;i &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3756&quot;&gt;c &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3758&quot;&gt;o &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3760&quot;&gt;C &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3762&quot;&gt;T &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3764&quot;&gt;F &#123; 3 n h 4 n &lt;&#x2F;tspan&gt;&lt;tspan
+id&#x3D;&quot;tspan3752&quot;&gt;c 3 d _ a a b 7 2 9 d d &#125;&lt;&#x2F;tspan&gt;&lt;&#x2F;text&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我們進一步將訊息截斷，只取我們要的部分<br>
+<code>cat drawing.flag.svg | ag &quot;&lt;/tspan&quot; | cut -d &quot;&gt;&quot; -f2 | cut -d &quot;&lt;&quot; -f1</code><br>
+這裡<code>-d</code>參數用以指定截斷處的字元，<code>-f1</code>或<code>-f2</code>指定要留下前面那一段還是後面那一段<br>
+輸出如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">p 
+i 
+c 
+o 
+C 
+T 
+F &#123; 3 n h 4 n 
+c 3 d _ a a b 7 2 9 d d &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接著要移除換行符與空白，我們可以用tr將他們刪除掉<br>
+<code>cat drawing.flag.svg | ag &quot;&lt;/tspan&quot; | cut -d &quot;&gt;&quot; -f2 | cut -d &quot;&lt;&quot; -f1 | tr -d &quot; &quot; | tr -d &quot;\n&quot;</code><br>
+得到的便是flag</p>
+<h1 id="st3g0" tabindex="-1">St3g0</h1>
+<p>先用<code>file</code>檢查一下</p>
+<pre class="line-numbers language-none"><code class="language-none">pico.flag.png: PNG image data, 585 x 172, 8-bit&#x2F;color RGBA, non-interlaced<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>沒什麼異狀<br>
+再用<code>exiftool</code>，也無異狀<br>
+使用<code>binwalk</code>得到輸出</p>
+<pre class="line-numbers language-none"><code class="language-none">DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 585 x 172, 8-bit&#x2F;color RGBA, non-interlaced
+41            0x29            Zlib compressed data, default compression<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用<code>zsteg</code>，便得到我們的flag</p>
+<h1 id="file-types" tabindex="-1">File types</h1>
+<p>用<code>flie</code>確認，發現副檔名<code>.pdf</code>是騙人的，他是一個<code>shell script</code>。用<code>bat Flag.pdf</code>確定這個script是沒問題的，我們chmod給權限並執行</p>
+<pre class="line-numbers language-none"><code class="language-none">x - created lock directory _sh00046.
+x - extracting flag (text)
+.&#x2F;Flag.pdf: 119: uudecode: not found
+restore of flag failed
+flag: MD5 check failed
+x - removed lock directory _sh00046.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>於是我們安裝<code>uudecode</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> sharutils <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>再試一次，得到一個名為flag的檔案，用<code>file</code>確認發現為current ar archive</p>
+<h2 id="ar" tabindex="-1" id="ar">ar</h2>
+<p><code>man ar</code> 看如何將其解壓縮<br>
+<code>ar x flag</code></p>
+<h2 id="cpio" tabindex="-1" id="cpio">cpio</h2>
+<pre class="line-numbers language-none"><code class="language-none">mv flag flag.cpio
+cpio -i &lt; flag.cpio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="bzip2" tabindex="-1" id="bzip2">bzip2</h2>
+<pre class="line-numbers language-none"><code class="language-none">bzip2 -d flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="gzip" tabindex="-1" id="Gzip">Gzip</h2>
+<pre class="line-numbers language-none"><code class="language-none">mv flag.out flag.gz
+gzip -d flag.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="lzip" tabindex="-1" id="lzip">lzip</h2>
+<pre class="line-numbers language-none"><code class="language-none">lzip -d flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="lz4" tabindex="-1" id="lz4">lz4</h2>
+<pre class="line-numbers language-none"><code class="language-none">mv flag.out flag.lz4
+lz4 -d flag.lz4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="lzma" tabindex="-1" id="lzma">lzma</h2>
+<pre class="line-numbers language-none"><code class="language-none">mv flag flag.lzma
+lzma -d flag.lzma<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="lzop" tabindex="-1" id="lzop">lzop</h2>
+<pre class="line-numbers language-none"><code class="language-none">mv flag flag.lzop
+lzop -d flag.lzop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="lzip-1" tabindex="-1" id="lzip-2">lzip</h2>
+<pre class="line-numbers language-none"><code class="language-none">lzip -d flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="xz" tabindex="-1" id="xz">xz</h2>
+<pre class="line-numbers language-none"><code class="language-none">mv flag.out flag.xz
+xz -d flag.xz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="hex" tabindex="-1" id="Hex">Hex</h2>
+<p>終於，我們拿到了文字檔，<code>cat</code>後結果看起來是16進位</p>
+<pre class="line-numbers language-none"><code class="language-none">7069636f4354467b66316c656e406d335f6d406e3170756c407431306e5f
+6630725f3062326375723137795f39353063346665657d0a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>用xxd解碼<code>cat flag | xxd -p -r</code>即得flag。</p>
+<blockquote>
+<p>一直解壓縮的部分跟bandit Level 12 -&gt; 13 挺像的</p>
+</blockquote>
+<h1 id="eavesdrop" tabindex="-1">Eavesdrop</h1>
+<p>這題也是封包分析題，一樣丟進wireshark分析</p>
+<blockquote>
+<p>TCP協議會用三次握手建立連接，四次揮手段開連接<br>
+Arp協議是用來取得目標ip的mac地址的<br>
+DHCP協議用來分配ip<br>
+可以看這兩個影片：</p>
+<ul>
+<li><a href="https://youtu.be/Iuvjwrm_O5g">一条视频讲清楚TCP协议与UDP协议-什么是三次握手与四次挥手?</a></li>
+<li><a href="https://youtu.be/mOVWyogzKvY">一条视频讲清楚什么是ARP协议-ARP攻击又是什么</a></li>
+</ul>
+</blockquote>
+<p>有以上先備知識，數據又沒加密，可以一邊看他們聊天內容一邊解題<br>
+所以劇情應如下：</p>
+<h2 id="%E5%8A%87%E6%83%85" tabindex="-1" id="劇情">劇情</h2>
+<h3 id="no.1~2" tabindex="-1" id="No-1-2">No.1~2</h3>
+<p>10.0.2.15請求ip位置</p>
+<h3 id="no.3~4" tabindex="-1" id="No-3-4">No.3~4</h3>
+<p>為了傳送訊息，使用arp協議取得目標的mac位置</p>
+<h3 id="no.5~11" tabindex="-1" id="No-5-11">No.5~11</h3>
+<p>No.5~7為10.0.2.15和10.0.2.4 TCP三次握手的過程<br>
+No.8~11是使用arp協議互相取得對方mac位置</p>
+<h3 id="no.12~no.19" tabindex="-1" id="No-12-No-19">No.12~No.19</h3>
+<blockquote>
+<p>10.0.2.4:Hey, how do you decrypt this file again? #No.12<br>
+10.0.2.15:You’re serious? #No.14<br>
+10.0.2.4:Yeah, I’m serious #No.16<br>
+10.0.2.15:*sigh* <strong>openssl des3 -d -salt -in file.des3 -out file.txt -k supersecretpassword123</strong> #No.18</p>
+</blockquote>
+<p>通信過程中會有一些Arp，我們都知道他是幹嘛的，對解題沒什麼幫助所以之後都將跳過。</p>
+<h3 id="no.24~37" tabindex="-1" id="No-24-37">No.24~37</h3>
+<blockquote>
+<p>10.0.2.4:Ok, great, thanks. #No.24<br>
+10.0.2.15:Let’s use Discord next time, it’s more secure. #No.26</p>
+</blockquote>
+<p>(你也知道現在這樣不安全啊)</p>
+<blockquote>
+<p>10.0.2.4:C’mon, no one knows we use this program like this! #No.28<br>
+10.0.2.15:Whatever. #No.30<br>
+10.0.2.4:Hey. #No.32<br>
+10.0.2.15:Yeah? #No.34<br>
+10.0.2.4:<strong>Could you transfer the file to me again?</strong></p>
+</blockquote>
+<p>看來是10.0.2.15接著會傳檔案給10.0.2.4，裡面便有本題的答案</p>
+<h3 id="no.38~47" tabindex="-1" id="No-38-47">No.38~47</h3>
+<p>看起來是10.0.2.15向35.224.170.84發起HTTP請求，可能只是單純瀏覽別的網站或是要下載要傳給10.0.2.4的檔案(我不知道XD)</p>
+<h3 id="no.48~" tabindex="-1" id="No-48">No.48~</h3>
+<blockquote>
+<p>10.0.2.15:Oh great. Ok, over 9002? #No.48<br>
+10.0.2.4:Yeah, listening. #No.52</p>
+</blockquote>
+<p>這裡的9002我不知道是什麼，可能是port之類的？</p>
+<p>No.57 10.0.2.15傳了48bytes的data，之後說</p>
+<blockquote>
+<p>10.0.2.15: Sent it #No.59</p>
+</blockquote>
+<p>所以No.57發送的這個data應該就是他傳輸的檔案，我們要的東西<br>
+將其以Hex Stream複製出來，得到</p>
+<pre class="line-numbers language-hex" data-language="hex"><code class="language-hex">53616c7465645f5f3c4b26e8b8f91e2c4af8031cfaf5f8f16fd40c25d40314e6497b39375808aba186f48da42eefa895<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>將其寫入檔案，並用No.18提到的解密方法解密</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#寫入檔案</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"53616c7465645f5f3c4b26e8b8f91e2c4af8031cfaf5f8f16fd40c25d40314e6497b39375808aba186f48da42eefa895"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-p</span> <span class="token parameter variable">-r</span> <span class="token operator">></span> file.des3
+<span class="token comment">#解密</span>
+openssl des3 <span class="token parameter variable">-d</span> <span class="token parameter variable">-salt</span> <span class="token parameter variable">-in</span> file.des3 <span class="token parameter variable">-out</span> file.txt <span class="token parameter variable">-k</span> supersecretpassword123
+<span class="token comment">#查看</span>
+<span class="token function">cat</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="redaction-gone-wrong" tabindex="-1">Redaction gone wrong</h1>
+<p>超簡單，當學生都做過的事<br>
+把pdf打開，用選取把黑框的部分反白就是答案</p>
+<h1 id="packets-primer" tabindex="-1">Packets Primer</h1>
+<p>簡單題，一樣開wiresharp分析封包，點開第四個封包就是答案<br>
+複製出來後可用<code>tr -d &quot; &quot;</code>把空格去掉</p>
+<h1 id="" tabindex="-1"></h1>
+]]></content>
+      <categories>
+        <category>Cyber</category>
+        <category>CTF Writeup</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>forensics</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2026 THJCC CTF Writeup</title>
     <url>/2026/02/27/2026-THJCC-CTF-Writeup/</url>
     <content><![CDATA[<h1 id="thjcc-2026-writeups" tabindex="-1">THJCC 2026 writeups</h1>
@@ -3197,6 +3197,92 @@ This is the new THJCC customer service bot... but it seems like he’s hiding a 
       </tags>
   </entry>
   <entry>
+    <title>CSES Exponentiation II 題解</title>
+    <url>/2026/05/31/CSES-Exponentiation-II-%E9%A1%8C%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>本題會用到上次在<a href="/2026/05/31/CSES-Exponentiation-%E9%A1%8C%E8%A7%A3/"><em><strong>CSES Exponentiation 題解 | R3X’s Blog</strong></em></a>講到的東西，並假設讀者都已看過。</p>
+</blockquote>
+<h1 id="%E9%A1%8C%E7%9B%AE" tabindex="-1">題目</h1>
+<ul>
+<li>Time limit: 1.00 s</li>
+<li>Memory limit: 512 MB</li>
+</ul>
+<p>Your task is to efficiently calculate values <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><msup><mi>b</mi><mi>c</mi></msup></msup></mrow><annotation encoding="application/x-tex">a^{b^c}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.88em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.88em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.<br>
+Note that in this task we assume that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>0</mn><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0^0=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The first input line contains an integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>: the number of calculations.<br/>After this, there are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> lines, each containing three integers <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>.</td>
+<td>Print each value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><msup><mi>b</mi><mi>c</mi></msup></msup></mrow><annotation encoding="application/x-tex">a^{b^c}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.88em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.88em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Constraints</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>2</mn><mo>⋅</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le n \le 2 \cdot 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">0 \le a,b,c \le 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3<br/>3 7 1<br/>15 2 2<br/>3 4 5<br/></td>
+<td>2187<br/>50625<br/>763327764</td>
+</tr>
+</tbody>
+</table>
+<h1 id="%E8%A7%A3%E6%B3%95" tabindex="-1">解法</h1>
+<p>這題跟前一題差不多，我們只要額外想如何處裡<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>上面的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>b</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">b^c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span></span></span></span>即可。因為<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">M = 10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>是質數，所以我們可以用費馬小定理，即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mi>M</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≡</mo><mn>1</mn><mspace></mspace><mspace width="0.4444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"/><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^{M-1}\equiv 1\pmod{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.109em;">M</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mclose">)</span></span></span></span>。於是我們只要先計算出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≡</mo><msup><mi>b</mi><mi>c</mi></msup><mspace></mspace><mspace width="0.4444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"/><mi>M</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t\equiv b^c \pmod{M-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>(這樣能有效的讓<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>的指數變小)，再計算<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">a^t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7936em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span>即可。指數計算則用我們上次提到的快速冪。</p>
+<h2 id="ac-code" tabindex="-1" id="AC-Code">AC Code</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> M <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token number">1e9</span> <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
+
+ll <span class="token function">fast_pow</span><span class="token punctuation">(</span>ll base<span class="token punctuation">,</span> ll exp<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  ll res <span class="token operator">=</span> <span class="token number">1LL</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>exp <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>exp<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>res <span class="token operator">=</span> <span class="token punctuation">(</span>res<span class="token operator">*</span>base<span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+    base <span class="token operator">=</span> <span class="token punctuation">(</span>base<span class="token operator">*</span>base<span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">;</span>
+    exp <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  ios<span class="token double-colon punctuation">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ll n<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">;</span>
+  cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    cin <span class="token operator">>></span> a <span class="token operator">>></span> b <span class="token operator">>></span> c<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token function">fast_pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token function">fast_pow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>M<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>M<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>OI</category>
+        <category>CSES</category>
+        <category>Mathematics</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSES Exponentiation 題解</title>
     <url>/2026/05/31/CSES-Exponentiation-%E9%A1%8C%E8%A7%A3/</url>
     <content><![CDATA[<h1 id="%E9%A1%8C%E7%9B%AE" tabindex="-1">題目</h1>
@@ -3614,92 +3700,6 @@ success<span class="token punctuation">(</span><span class="token string-interpo
         <tag>crypto</tag>
         <tag>CTF</tag>
         <tag>RSA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSES Exponentiation II 題解</title>
-    <url>/2026/05/31/CSES-Exponentiation-II-%E9%A1%8C%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>本題會用到上次在<a href="/2026/05/31/CSES-Exponentiation-%E9%A1%8C%E8%A7%A3/"><em><strong>CSES Exponentiation 題解 | R3X’s Blog</strong></em></a>講到的東西，並假設讀者都已看過。</p>
-</blockquote>
-<h1 id="%E9%A1%8C%E7%9B%AE" tabindex="-1">題目</h1>
-<ul>
-<li>Time limit: 1.00 s</li>
-<li>Memory limit: 512 MB</li>
-</ul>
-<p>Your task is to efficiently calculate values <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><msup><mi>b</mi><mi>c</mi></msup></msup></mrow><annotation encoding="application/x-tex">a^{b^c}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.88em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.88em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.<br>
-Note that in this task we assume that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>0</mn><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0^0=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
-<table>
-<thead>
-<tr>
-<th>Input</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>The first input line contains an integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>: the number of calculations.<br/>After this, there are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> lines, each containing three integers <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>.</td>
-<td>Print each value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><msup><mi>b</mi><mi>c</mi></msup></msup></mrow><annotation encoding="application/x-tex">a^{b^c}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.88em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.88em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.</td>
-</tr>
-</tbody>
-</table>
-<p>Constraints</p>
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>2</mn><mo>⋅</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le n \le 2 \cdot 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">0 \le a,b,c \le 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></li>
-</ul>
-<p>Example:</p>
-<table>
-<thead>
-<tr>
-<th>Input</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3<br/>3 7 1<br/>15 2 2<br/>3 4 5<br/></td>
-<td>2187<br/>50625<br/>763327764</td>
-</tr>
-</tbody>
-</table>
-<h1 id="%E8%A7%A3%E6%B3%95" tabindex="-1">解法</h1>
-<p>這題跟前一題差不多，我們只要額外想如何處裡<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>上面的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>b</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">b^c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span></span></span></span>即可。因為<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">M = 10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>是質數，所以我們可以用費馬小定理，即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mi>M</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≡</mo><mn>1</mn><mspace></mspace><mspace width="0.4444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"/><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^{M-1}\equiv 1\pmod{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.109em;">M</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mclose">)</span></span></span></span>。於是我們只要先計算出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≡</mo><msup><mi>b</mi><mi>c</mi></msup><mspace></mspace><mspace width="0.4444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"/><mi>M</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t\equiv b^c \pmod{M-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span></span></span></span></span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>(這樣能有效的讓<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>的指數變小)，再計算<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">a^t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7936em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span>即可。指數計算則用我們上次提到的快速冪。</p>
-<h2 id="ac-code" tabindex="-1" id="AC-Code">AC Code</h2>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token keyword">int</span> M <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token number">1e9</span> <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">;</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
-
-ll <span class="token function">fast_pow</span><span class="token punctuation">(</span>ll base<span class="token punctuation">,</span> ll exp<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  ll res <span class="token operator">=</span> <span class="token number">1LL</span><span class="token punctuation">;</span>
-  <span class="token keyword">while</span><span class="token punctuation">(</span>exp <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>exp<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>res <span class="token operator">=</span> <span class="token punctuation">(</span>res<span class="token operator">*</span>base<span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
-    base <span class="token operator">=</span> <span class="token punctuation">(</span>base<span class="token operator">*</span>base<span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">;</span>
-    exp <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  ios<span class="token double-colon punctuation">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  ll n<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">;</span>
-  cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
-  <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    cin <span class="token operator">>></span> a <span class="token operator">>></span> b <span class="token operator">>></span> c<span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token function">fast_pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token function">fast_pow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>M<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>M<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>OI</category>
-        <category>CSES</category>
-        <category>Mathematics</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -5901,6 +5901,110 @@ Hello, Alice Smith<span aria-hidden="true" class="line-numbers-rows"><span></spa
       </tags>
   </entry>
   <entry>
+    <title>CSES Dice Combinations 題解</title>
+    <url>/2026/06/03/CSES-Dice-Combinations-%E9%A1%8C%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p><s>DP? 想成高中數學的遞迴就好啦</s></p>
+</blockquote>
+<h1 id="%E9%A1%8C%E7%9B%AE" tabindex="-1">題目</h1>
+<ul>
+<li>Time limit: 1.00 s</li>
+<li>Memory limit: 512 MB</li>
+</ul>
+<p>Your task is to count the number of ways to construct sum n by throwing a dice one or more times. Each throw produces an outcome between 1 and  6.<br>
+For example, if n=3, there are 4 ways:</p>
+<ul>
+<li>1+1+1</li>
+<li>1+2</li>
+<li>2+1</li>
+<li>3</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The only input line has an integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>.</td>
+<td>Print the number of ways modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Constraints</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1 \le n \le 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h1 id="%E8%A7%A3%E6%B3%95" tabindex="-1">解法</h1>
+<h2 id="%E5%88%86%E6%9E%90" tabindex="-1" id="分析">分析</h2>
+<p>這是DP入門題<br>
+給定<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">N</mi></mrow><annotation encoding="application/x-tex">n\in\N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">N</span></span></span></span>，令<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\mathrm{dp}[n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mclose">]</span></span></span></span>表示欲求的方法數。</p>
+<p>首先處理<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">n=1,2,\cdots,6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span></span></span></span>的情形，此時是整數的有序拆分<br>
+(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n\geq 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>時就不是了，以<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n=7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>作為舉例，直接算整數拆分的方法數會多算到「擲出一個<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>」這個方法，但骰子點數只有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span>)<br>
+對於整數<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>的整數拆分，可以看成有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>顆球一字排開，如此共有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>個空隙，每個空隙都可選擇放/不放一個隔板，此方法數與整數拆分方法數一一對應。如此共有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>種方法。</p>
+<p>而當<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>k</mi><mo>≥</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n=k\geq 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>，欲組出總和為<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>，可以是以下幾種情形：<br>
+- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span><br>
+- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span><br>
+- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span><br>
+等等，一直到<br>
+- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">k-6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span></p>
+<p>於是</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mrow><mi mathvariant="double-struck">d</mi><mi mathvariant="double-struck">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mtext> </mtext><mi>n</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><mn>6</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>+</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">]</mo><mo>+</mo><mo>⋯</mo><mo>+</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>6</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mtext> </mtext><mi>n</mi><mo>≥</mo><mn>7</mn></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+\mathbb{dp}[n]=2^{n-1}, \space n=1,2,\cdots,6  \\
+\mathrm{dp}[n]=\mathrm{dp}[n-1]+\mathrm{dp}[n-2]+\cdots+\mathrm{dp}[n-6],\space n\geq 7
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">6</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>喔然後記得模<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span></p>
+<h2 id="ac-code" tabindex="-1" id="AC-Code">AC Code</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> M <span class="token operator">=</span> <span class="token number">1e9</span><span class="token operator">+</span><span class="token number">7</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> N_MAX <span class="token operator">=</span> <span class="token number">1e6</span><span class="token punctuation">;</span>
+
+<span class="token keyword">long</span> <span class="token keyword">long</span> dp<span class="token punctuation">[</span>N_MAX<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+  cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">6</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span><span class="token number">6</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> M<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  cout <span class="token operator">&lt;&lt;</span> dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>這裡用了一個技巧，<code>1 &lt;&lt; (i-1)</code>。其中<code>&lt;&lt;</code>是左移算子，表示在二進位表示中將整個數字往左移<code>i-1</code>格，然後在後面補<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>。<br>
+比如<code>1 &lt;&lt; 5</code>的結果等於<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>100000</mn><mn>2</mn></msub><mo>=</mo><msup><mn>2</mn><mn>5</mn></msup><mo>=</mo><msub><mn>32</mn><mn>10</mn></msub></mrow><annotation encoding="application/x-tex">100000_2=2^5=32_{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">10000</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">3</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。所以<code>1 &lt;&lt; (i-1)</code>其實就是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>的意思。</p>
+]]></content>
+      <categories>
+        <category>OI</category>
+        <category>CSES</category>
+        <category>Dynamic Programming</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSES - Counting Divisors 題解</title>
     <url>/2026/06/11/CSES-Counting-Divisors-%E9%A1%8C%E8%A7%A3/</url>
     <content><![CDATA[<blockquote>
@@ -6481,110 +6585,6 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
       </tags>
   </entry>
   <entry>
-    <title>CSES Dice Combinations 題解</title>
-    <url>/2026/06/03/CSES-Dice-Combinations-%E9%A1%8C%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p><s>DP? 想成高中數學的遞迴就好啦</s></p>
-</blockquote>
-<h1 id="%E9%A1%8C%E7%9B%AE" tabindex="-1">題目</h1>
-<ul>
-<li>Time limit: 1.00 s</li>
-<li>Memory limit: 512 MB</li>
-</ul>
-<p>Your task is to count the number of ways to construct sum n by throwing a dice one or more times. Each throw produces an outcome between 1 and  6.<br>
-For example, if n=3, there are 4 ways:</p>
-<ul>
-<li>1+1+1</li>
-<li>1+2</li>
-<li>2+1</li>
-<li>3</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Input</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>The only input line has an integer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>.</td>
-<td>Print the number of ways modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>.</td>
-</tr>
-</tbody>
-</table>
-<p>Constraints</p>
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1 \le n \le 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></li>
-</ul>
-<p>Example:</p>
-<table>
-<thead>
-<tr>
-<th>Input</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-<h1 id="%E8%A7%A3%E6%B3%95" tabindex="-1">解法</h1>
-<h2 id="%E5%88%86%E6%9E%90" tabindex="-1" id="分析">分析</h2>
-<p>這是DP入門題<br>
-給定<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">N</mi></mrow><annotation encoding="application/x-tex">n\in\N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">N</span></span></span></span>，令<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\mathrm{dp}[n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mclose">]</span></span></span></span>表示欲求的方法數。</p>
-<p>首先處理<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">n=1,2,\cdots,6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span></span></span></span>的情形，此時是整數的有序拆分<br>
-(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n\geq 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>時就不是了，以<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n=7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>作為舉例，直接算整數拆分的方法數會多算到「擲出一個<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>」這個方法，但骰子點數只有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span>)<br>
-對於整數<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>的整數拆分，可以看成有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>顆球一字排開，如此共有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>個空隙，每個空隙都可選擇放/不放一個隔板，此方法數與整數拆分方法數一一對應。如此共有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>種方法。</p>
-<p>而當<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>k</mi><mo>≥</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">n=k\geq 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>，欲組出總和為<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span>，可以是以下幾種情形：<br>
-- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span><br>
-- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span><br>
-- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span><br>
-等等，一直到<br>
-- 前幾次已組出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">k-6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span>，最後一次擲出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span></p>
-<p>於是</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mrow><mi mathvariant="double-struck">d</mi><mi mathvariant="double-struck">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><mtext> </mtext><mi>n</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><mn>6</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>+</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy="false">]</mo><mo>+</mo><mo>⋯</mo><mo>+</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">p</mi></mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>6</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mtext> </mtext><mi>n</mi><mo>≥</mo><mn>7</mn></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
-\mathbb{dp}[n]=2^{n-1}, \space n=1,2,\cdots,6  \\
-\mathrm{dp}[n]=\mathrm{dp}[n-1]+\mathrm{dp}[n-2]+\cdots+\mathrm{dp}[n-6],\space n\geq 7
-\end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathrm">dp</span></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">6</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<p>喔然後記得模<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span></p>
-<h2 id="ac-code" tabindex="-1" id="AC-Code">AC Code</h2>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token keyword">int</span> M <span class="token operator">=</span> <span class="token number">1e9</span><span class="token operator">+</span><span class="token number">7</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> N_MAX <span class="token operator">=</span> <span class="token number">1e6</span><span class="token punctuation">;</span>
-
-<span class="token keyword">long</span> <span class="token keyword">long</span> dp<span class="token punctuation">[</span>N_MAX<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token keyword">int</span> n<span class="token punctuation">;</span>
-  cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">6</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span><span class="token number">6</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> M<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  cout <span class="token operator">&lt;&lt;</span> dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>這裡用了一個技巧，<code>1 &lt;&lt; (i-1)</code>。其中<code>&lt;&lt;</code>是左移算子，表示在二進位表示中將整個數字往左移<code>i-1</code>格，然後在後面補<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>。<br>
-比如<code>1 &lt;&lt; 5</code>的結果等於<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>100000</mn><mn>2</mn></msub><mo>=</mo><msup><mn>2</mn><mn>5</mn></msup><mo>=</mo><msub><mn>32</mn><mn>10</mn></msub></mrow><annotation encoding="application/x-tex">100000_2=2^5=32_{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">10000</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">3</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。所以<code>1 &lt;&lt; (i-1)</code>其實就是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>的意思。</p>
-]]></content>
-      <categories>
-        <category>OI</category>
-        <category>CSES</category>
-        <category>Dynamic Programming</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>DP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSES Trailing Zeros 題解</title>
     <url>/2026/06/01/CSES-Trailing-Zeros-%E9%A1%8C%E8%A7%A3/</url>
     <content><![CDATA[<h1 id="%E9%A1%8C%E7%9B%AE" tabindex="-1">題目</h1>
@@ -6673,59 +6673,6 @@ For example, <span class="katex"><span class="katex-mathml"><math xmlns="http://
         <tag>C++</tag>
         <tag>math</tag>
         <tag>factorial</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[Note] Writing a simple Program in C - LiveOverflow</title>
-    <url>/2026/06/03/Note-Writing-a-simple-Program-in-C-LiveOverflow/</url>
-    <content><![CDATA[<p>看了這部影片 <a href="https://youtu.be/JGoUaCmMNpE?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN">Writing a simple Program in C - YouTube</a> 做的筆記</p>
-<h1 id="path" tabindex="-1">PATH</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"PATH"</span> <span class="token comment"># or</span>
-<span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span> <span class="token comment">#this one</span>
-
-<span class="token comment"># add to PATH(for one time)</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="vim-%E5%9F%BA%E7%A4%8E" tabindex="-1">vim 基礎</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:syntax on <span class="token comment">#上色</span>
-:set number <span class="token comment">#標號</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="c-%E8%AA%9E%E8%A8%80" tabindex="-1">C 語言</h1>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>argc<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Knock, Knock, %s\n"</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Usage: %s &lt;name>\n"</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>解析：</p>
-<ul>
-<li>
-<p>argc: 參數數量(從檔案名稱算起)</p>
-</li>
-<li>
-<p>argv: 參數矩陣(包含檔案名稱)<br>
-範例：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"argc: %d\n"</span><span class="token punctuation">,</span>argc<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"argv:\n"</span><span class="token punctuation">)</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>argc<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\targv[%d]: %s\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>輸出：<br>
-<img src="output.png" alt="output"></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Cyber</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>vim</tag>
       </tags>
   </entry>
   <entry>
@@ -6969,6 +6916,59 @@ Flag: <code>GPNCTF{I_Feel_lIK3_Y0u_4RE_RE4Dy_fOR_oUr_H4RD35T_d1shes_NOw}</code><
         <tag>reverse</tag>
         <tag>CTF</tag>
         <tag>forensics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[Note] Writing a simple Program in C - LiveOverflow</title>
+    <url>/2026/06/03/Note-Writing-a-simple-Program-in-C-LiveOverflow/</url>
+    <content><![CDATA[<p>看了這部影片 <a href="https://youtu.be/JGoUaCmMNpE?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN">Writing a simple Program in C - YouTube</a> 做的筆記</p>
+<h1 id="path" tabindex="-1">PATH</h1>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"PATH"</span> <span class="token comment"># or</span>
+<span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span> <span class="token comment">#this one</span>
+
+<span class="token comment"># add to PATH(for one time)</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="vim-%E5%9F%BA%E7%A4%8E" tabindex="-1">vim 基礎</h1>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:syntax on <span class="token comment">#上色</span>
+:set number <span class="token comment">#標號</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="c-%E8%AA%9E%E8%A8%80" tabindex="-1">C 語言</h1>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>argc<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Knock, Knock, %s\n"</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Usage: %s &lt;name>\n"</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解析：</p>
+<ul>
+<li>
+<p>argc: 參數數量(從檔案名稱算起)</p>
+</li>
+<li>
+<p>argv: 參數矩陣(包含檔案名稱)<br>
+範例：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"argc: %d\n"</span><span class="token punctuation">,</span>argc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"argv:\n"</span><span class="token punctuation">)</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>argc<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\targv[%d]: %s\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>輸出：<br>
+<img src="output.png" alt="output"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Cyber</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>vim</tag>
       </tags>
   </entry>
   <entry>
