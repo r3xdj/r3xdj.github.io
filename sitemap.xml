@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://r3xdj.github.io/projects/index.html</loc>
+    <loc>https://r3xdj.github.io/links/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/links/index.html</loc>
+    <loc>https://r3xdj.github.io/projects/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/index.html</loc>
+    <loc>https://r3xdj.github.io/about/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/about/index.html</loc>
+    <loc>https://r3xdj.github.io/categories/index.html</loc>
     
     <lastmod>2026-06-11</lastmod>
     
@@ -245,6 +245,20 @@
 
   
   <url>
+    <loc>https://r3xdj.github.io/tags/forensics/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/CTF/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/crypto/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -260,20 +274,6 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/misc/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/ais3/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/CTF/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -308,7 +308,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/forensics/</loc>
+    <loc>https://r3xdj.github.io/tags/ais3/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/AI/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -350,13 +357,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/AI/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/tags/png/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -385,6 +385,27 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/sieve/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/DP/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/factorial/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/Catalan-number/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -407,27 +428,6 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/gcd/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/sieve/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/DP/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/factorial/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -471,13 +471,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/OI/CSES/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/categories/Testing/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -485,7 +478,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/OI/CSES/Mathematics/</loc>
+    <loc>https://r3xdj.github.io/categories/OI/CSES/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -493,6 +486,13 @@
   
   <url>
     <loc>https://r3xdj.github.io/categories/Testing/Demo/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/categories/OI/CSES/Mathematics/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
