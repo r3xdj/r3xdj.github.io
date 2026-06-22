@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/about/index.html</loc>
+    <loc>https://r3xdj.github.io/categories/index.html</loc>
     
     <lastmod>2026-06-22</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/index.html</loc>
+    <loc>https://r3xdj.github.io/about/index.html</loc>
     
     <lastmod>2026-06-22</lastmod>
     
@@ -277,6 +277,13 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/pwn/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/crypto/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -292,13 +299,6 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/misc/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/pwn/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -326,14 +326,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/ais3/</loc>
+    <loc>https://r3xdj.github.io/tags/AI/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/AI/</loc>
+    <loc>https://r3xdj.github.io/tags/ais3/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -403,21 +403,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/DP/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/tags/apmoc/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/sieve/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -452,7 +438,21 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/DP/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/factorial/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/sieve/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -531,14 +531,14 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/OI/CSES/Introductory-Problems/</loc>
+    <loc>https://r3xdj.github.io/categories/OI/CSES/Dynamic-Programming/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/OI/CSES/Dynamic-Programming/</loc>
+    <loc>https://r3xdj.github.io/categories/OI/CSES/Introductory-Problems/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
