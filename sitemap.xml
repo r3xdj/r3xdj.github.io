@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://r3xdj.github.io/tags/</loc>
+    <loc>https://r3xdj.github.io/projects/</loc>
     
     <lastmod>2026-06-22</lastmod>
     
@@ -20,7 +20,16 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/projects/</loc>
+    <loc>https://r3xdj.github.io/tags/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/google2f63d9021a833ce2</loc>
     
     <lastmod>2026-06-22</lastmod>
     
@@ -284,6 +293,20 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/ais3/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/CTF/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/pwn/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -305,13 +328,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/tags/CTF/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/tags/Kali-Linux/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -320,13 +336,6 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/forensics/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/ais3/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -375,6 +384,13 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.github.io/tags/png/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.github.io/tags/markdown/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -390,55 +406,6 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/hexo/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/png/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/apmoc/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/sieve/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/DP/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/factorial/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/C/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.github.io/tags/vim/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -467,6 +434,48 @@
   
   <url>
     <loc>https://r3xdj.github.io/tags/gcd/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/sieve/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/DP/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/factorial/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/apmoc/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/C/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/tags/vim/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -503,13 +512,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/Journey/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/categories/OI/CSES/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -524,13 +526,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.github.io/categories/OI/CSES/Introductory-Problems/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.github.io/categories/OI/CSES/Mathematics/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -539,6 +534,20 @@
   
   <url>
     <loc>https://r3xdj.github.io/categories/OI/CSES/Dynamic-Programming/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/categories/OI/CSES/Introductory-Problems/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.github.io/categories/Journey/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
