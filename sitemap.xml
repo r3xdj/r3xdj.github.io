@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.pages.dev/projects/</loc>
-    
-    <lastmod>2026-06-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.pages.dev/tags/</loc>
     
     <lastmod>2026-06-22</lastmod>
@@ -29,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.pages.dev/about/</loc>
+    <loc>https://r3xdj.pages.dev/projects/</loc>
     
     <lastmod>2026-06-22</lastmod>
     
@@ -47,7 +38,25 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.pages.dev/about/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.pages.dev/categories/</loc>
+    
+    <lastmod>2026-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.pages.dev/google34b0d8ebe260fb23</loc>
     
     <lastmod>2026-06-22</lastmod>
     
@@ -293,20 +302,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.pages.dev/tags/ais3/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.pages.dev/tags/CTF/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.pages.dev/tags/pwn/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -328,7 +323,35 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.pages.dev/tags/CTF/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.pages.dev/tags/Kali-Linux/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.pages.dev/tags/forensics/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.pages.dev/tags/ais3/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.pages.dev/tags/AI/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -363,20 +386,6 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.pages.dev/tags/Kali-Linux/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.pages.dev/tags/AI/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.pages.dev/tags/RSA/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -399,20 +408,6 @@
   
   <url>
     <loc>https://r3xdj.pages.dev/tags/hexo/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.pages.dev/tags/png/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.pages.dev/tags/apmoc/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -447,6 +442,13 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.pages.dev/tags/apmoc/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.pages.dev/tags/sieve/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -461,6 +463,20 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.pages.dev/tags/png/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.pages.dev/tags/factorial/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.pages.dev/tags/C/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -469,13 +485,6 @@
   
   <url>
     <loc>https://r3xdj.pages.dev/tags/vim/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.pages.dev/tags/factorial/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -505,6 +514,20 @@
   </url>
   
   <url>
+    <loc>https://r3xdj.pages.dev/categories/OI/CSES/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://r3xdj.pages.dev/categories/OI/CSES/Mathematics/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://r3xdj.pages.dev/categories/Testing/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -519,21 +542,7 @@
   </url>
   
   <url>
-    <loc>https://r3xdj.pages.dev/categories/OI/CSES/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://r3xdj.pages.dev/categories/Testing/Demo/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://r3xdj.pages.dev/categories/OI/CSES/Mathematics/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
