@@ -129,6 +129,26 @@ body {
   color: #108405;
 }
 
+[data-theme="dark"] .about-tag-cyber {
+    background: rgba(161, 105, 255, 0.25);
+    color: #c4a7ff;
+}
+
+[data-theme="dark"] .about-tag-math {
+    background: rgba(246, 233, 182, 0.15);
+    color: #fce883;
+}
+
+[data-theme="dark"] .about-tag-dev {
+    background: rgba(173, 216, 255, 0.2);
+    color: #93c5fd;
+}
+
+[data-theme="dark"] .about-tag-phy {
+    background: rgba(138, 228, 154, 0.2);
+    color: #86efac;
+}
+
 /* Override flink layout for larger friend link cards */
 .flink-list {
   display: flex;
@@ -652,19 +672,6 @@ footer#footer,
     transform: scaleX(0); 
 }
 
-/* 當 JS 偵測到滑入並賦予 .animate 類別時，才啟動動畫 */
-.project-progress-fill.animate {
-    /* projectLoad 改為 2.8 秒滑順慢速延伸 */
-    animation: 
-        projectLoad 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards,
-        progressMove 1.2s linear infinite;
-}
-
-/* 當卡片內有 .badge-done（已完成）時，進度條自動變綠色流光 */
-.project-card:has(.badge-done) .project-progress-fill {
-    background-color: #28a745;
-}
-
 .project-links {
     list-style: none !important;
     padding-left: 0 !important;
@@ -692,6 +699,102 @@ footer#footer,
 .project-links a:hover {
     color: #00bef4 !important;
     text-decoration: underline;
+}
+
+/* ==========================================
+   全站通用：卡片內子進度條 (Sub Progress Bar) 橫向對齊與美化
+   ========================================== */
+
+/* 1. 子任務外殼：使用 Flex 佈局讓文字和進度條橫向並排並置中對齊 */
+.project-card .sub-task-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 左邊放文字，右邊放進度條 */
+    width: 100%;
+    margin: 8px 0;
+}
+
+/* 2. 子任務的文字：設定固定最小寬度，保證右側的進度條開頭能完美對齊 */
+.project-card .sub-task-name {
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.85;
+    min-width: 150px; /* 如果專案/目標的文字比較長，可以自由拉大這個數值 */
+    flex-shrink: 0;
+}
+
+/* 3. 精細化子進度條：只縮小被包裹在 sub-task-container 內部的進度條 */
+.project-card .sub-task-container .project-progress-bar {
+    flex-grow: 1;               /* 自動填滿剩下的右側空間 */
+    height: 6px !important;     /* 覆蓋原本主進度條的高度，讓它變細、更精緻 */
+    margin: 0 0 0 15px !important; /* 取消原本進度條的上下 margin，改成與左側文字保持 15px 間距 */
+    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 10px !important;
+}
+
+/* 4. 深色模式下的子進度條軌道背景 */
+[data-theme="dark"] .project-card .sub-task-container .project-progress-bar {
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 5. 子進度條的填充部分：賦予和主進度條類似的科技感漸層 */
+.project-card .sub-task-container .project-progress-fill {
+    border-radius: 10px !important;
+    background: linear-gradient(90deg, #00bef4, #0076f4) !important;
+}
+
+/* 深色模式下的子進度條填充（客製化霓虹發光感，藍轉紫漸層） */
+[data-theme="dark"] .project-card .sub-task-container .project-progress-fill {
+    background: linear-gradient(90deg, #00bef4, #a169ff) !important; 
+    box-shadow: 0 0 8px rgba(0, 190, 244, 0.4) !important;
+}
+
+/* 當 JS 偵測到滑入並賦予 .animate 類別時，才啟動動畫 */
+.project-progress-fill.animate {
+    /* projectLoad 改為 2.8 秒滑順慢速延伸 */
+    animation: 
+        projectLoad 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+        progressMove 1.2s linear infinite;
+}
+
+/* ==========================================
+   全站通用：當子進度條填滿 100% 時自動變綠色
+   ========================================== */
+
+/* 1. 淺色模式：100% 滿格時切換為舒適的綠色漸層 */
+.project-card .sub-task-container .project-progress-fill[style*="width: 100%"] {
+    background: linear-gradient(90deg, #10b981, #059669) !important; /* 翡翠綠漸層 */
+}
+
+/* 2. 深色模式：100% 滿格時切換為帶有霓虹發光感的綠色 */
+[data-theme="dark"] .project-card .sub-task-container .project-progress-fill[style*="width: 100%"] {
+    background: linear-gradient(90deg, #34d399, #10b981) !important; /* 科技感薄荷綠漸層 */
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.5) !important;         /* 綠色霓虹微光 */
+}
+
+/* 6. 清除 <li> 的預設圓點或縮排影響，確保橫向排版在清單中不歪斜 */
+.project-card ul, 
+.project-card li {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+/* ==========================================
+   Goal / Project 頁面：調整 li 清單文字大小
+   ========================================== */
+
+/* 1. 放大主要清單文字，並調整行高 */
+.project-card .project-links li {
+    font-size: 1.05em !important; /* 原本大約是 0.9em~1em，微調放大 */
+    line-height: 1.8 !important;   /* 舒適的行高，防止文字跟進度條擠在一起 */
+    color: var(--text-color);
+}
+
+/* 2. 同步微調子進度條的標題文字，保持視覺和諧 */
+.project-card .sub-task-name {
+    font-size: 0.95em !important; /* 配合 li 的放大，同步微調子任務名稱 */
+    font-weight: 500;             /* 稍微加粗，讓結構更清晰 */
 }
 
 /* ------------------------------------------
@@ -908,4 +1011,74 @@ html[data-theme="light"] #card-toc {
   background: #ffffff !important;
   border: 1px solid rgba(226, 232, 240, 0.8) !important;   /* 輕薄淡雅的邊框 */
   box-shadow: 0 4px 15px rgba(148, 163, 184, 0.06) !important; /* 現代感微陰影 */
+}
+
+/* ==========================================
+   修正 1：側邊工具欄與懸浮按鈕深色模式統一
+   ========================================== */
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] #rightside > div > button,
+[data-theme="dark"] #rightside > div > a {
+    background-color: rgba(15, 23, 42, 0.93) !important;
+    border: 1px solid rgba(71, 85, 105, 0.4) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="dark"] #rightside > div > button:hover,
+[data-theme="dark"] #rightside > div > a:hover {
+    background-color: #00bef4 !important; /* 懸停時變為科技藍 */
+    color: #fff !important;
+}
+
+/* ==========================================
+   修正 4：拓寬全站版面與文章閱讀區塊
+   ========================================== */
+.layout {
+    max-width: 1350px !important; /* 原本大約是 1200px */
+}
+
+/* 調整主內容佔比 */
+.layout > div:first-child {
+    width: 76% !important; 
+}
+
+/* 調整側邊欄佔比 */
+#aside-content {
+    width: 24% !important; 
+}
+
+/* 確保手機與平板不會跑版 */
+@media screen and (max-width: 900px) {
+    .layout > div:first-child { width: 100% !important; }
+    #aside-content { width: 100% !important; }
+}
+
+/* ==========================================
+   1. 徹底移除文章方塊的細線邊框
+   ========================================== */
+#recent-posts {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+/* ==========================================
+   2. 全站視覺圓角統一 (核心組件 16px)
+   ========================================== */
+/* 包含：首頁文章卡片、側邊欄工具、文章內頁主體、獨立頁面(About/Links)、歸檔與分類頁 */
+.recent-post-item,
+#aside-content .card-widget,
+.layout > #post,
+.layout > #page,
+.layout > #archive,
+.layout > #tag,
+.layout > #category,
+.flink-list-item {
+    border-radius: 35px !important;
+}
+
+#article-container img,
+#article-container .highlight,
+#article-container blockquote,
+.note {
+    border-radius: 25px !important;
 }

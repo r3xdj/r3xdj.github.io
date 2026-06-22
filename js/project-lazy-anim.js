@@ -1,31 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 抓取頁面上所有的進度條元件
-    const progressFills = document.querySelectorAll('.project-progress-fill');
-    
-    if ('IntersectionObserver' in window) {
-        const observerOptions = {
-            root: null,      // 以瀏覽器視窗作為基礎
-            rootMargin: '0px',
-            threshold: 0.1   // 只要進度條露出 10% 就觸發
-        };
+    // 判斷元素是否真的可見（viewport 內 + 不在 closed details 裡）
+    function isElementVisible(el) {
+        // 往上找祖先，只要有任何一個 <details> 是收起的就跳過
+        let parent = el.parentElement;
+        while (parent) {
+            if (parent.tagName === 'DETAILS' && !parent.open) {
+                return false;
+            }
+            parent = parent.parentElement;
+        }
 
-        const animationObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                // 當目標進入可視範圍
-                if (entry.isIntersecting) {
-                    const fill = entry.target;
-                    // 加上 animate 類別啟動 CSS 動畫
-                    fill.classList.add('animate');
-                    // 觸發後就解除監聽，避免重複跑動畫
-                    observer.unobserve(fill);
-                }
-            });
-        }, observerOptions);
-
-        // 綁定每一個進度條
-        progressFills.forEach(fill => animationObserver.observe(fill));
-    } else {
-        // 備份方案：如果瀏覽器太舊不支援 Observer，直接全部載入動畫
-        progressFills.forEach(fill => fill.classList.add('animate'));
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top < window.innerHeight &&
+            rect.bottom > 0 &&
+            rect.left < window.innerWidth &&
+            rect.right > 0
+        );
     }
+
+    // 掃描所有進度條，符合條件就加上 animate
+    function checkAndAnimateProgressBars() {
+        document.querySelectorAll('.project-progress-fill').forEach(fill => {
+            if (!fill.classList.contains('animate') && isElementVisible(fill)) {
+                fill.classList.add('animate');
+            }
+        });
+    }
+
+    // 初始掃描
+    checkAndAnimateProgressBars();
+
+    // scroll：用 requestAnimationFrame，比 debounce 快得多（約 16ms），也不會過度執行
+    let rafPending = false;
+    window.addEventListener('scroll', () => {
+        if (!rafPending) {
+            rafPending = true;
+            requestAnimationFrame(() => {
+                checkAndAnimateProgressBars();
+                rafPending = false;
+            });
+        }
+    }, { passive: true });
+
+    // resize：用較短的 debounce 即可（不需要 rAF，resize 不用那麼即時）
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(checkAndAnimateProgressBars, 150);
+    });
+
+    // details 展開時：等 layout 完成後才掃描，避免偷跑
+    document.querySelectorAll('details').forEach(detailsEl => {
+        detailsEl.addEventListener('toggle', () => {
+            if (detailsEl.open) {
+                setTimeout(checkAndAnimateProgressBars, 50);
+            }
+        });
+    });
 });
