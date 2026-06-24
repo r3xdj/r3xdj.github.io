@@ -20,7 +20,7 @@ body {
 .highlight,
 .highlight table,
 .highlight .code pre {
-  font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace !important;
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", monospace !important;
   font-variant-ligatures: none; /* 若想要開啟連字功能（例如 != 變成 ≠），可以改成 normal */
 }
 
