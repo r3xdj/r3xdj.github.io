@@ -1,3 +1,11 @@
+/* 重新調整文章內的所有標題大小，拉開與 18px 內文的差距 */
+#article-container h1 { font-size: 2.5rem; }   /* 45px */
+#article-container h2 { font-size: 2.1rem; }   /* ~38px */
+#article-container h3 { font-size: 1.8rem; }   /* ~32px */
+#article-container h4 { font-size: 1.5rem; }   /* 27px */
+#article-container h5 { font-size: 1.35rem; }  /* ~24px */
+#article-container h6 { font-size: 1.2rem; }   /* 21.6px -> 確保明顯大於 18px 內文 */
+
 /* 引入 Google Fonts 雲端字體：JetBrains Mono (程式碼) 與 Noto Sans TC (中文思源黑體) */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
